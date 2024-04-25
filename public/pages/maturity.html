@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maturity date calculator offline</title>
+    <script type="module" src="/pyscript/core.js"></script>
+    <link rel="stylesheet" href="/pyscript/core.css" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="manifest" href="/manifest.json" />
+  </head>
+  <body>
+    <script type="py">
+      import sys
+      print("version:", sys.version)
+    </script>
+    <script type="py" config="../config.json">
+      from pyscript import document
+      from treasury_bills import Treasury
+
+      treasury = Treasury()
+
+      def calculate(e):
+        e.preventDefault()
+        weeks = int(document.getElementById('weeks').value)
+        issue_date = document.getElementById('issue-date').value
+        reinvestments = int(document.getElementById('reinvestments').value)
+        result = treasury.maturity(weeks, issue_date, reinvestments)
+        document.getElementById('result-inner').innerHTML = result
+        return
+    </script>
+
+    <nav>
+      <ul>
+        <li><a href="/">Tbills</a></li>
+        <li><a href="/pages/percentage.html">percentage</a></li>
+        <li><a href="/pages/maturity.html">maturity</a></li>
+      </ul>
+    </nav>
+
+    <h1>Maturity</h1>
+
+    <div class="wrapper">
+      <form id="calculator-form" class="form-0" py-submit="calculate">
+        <div class="module-wrapper">
+          <div class="label-input-wrapper">
+            <label for="issue-date">Issue Date:</label>
+            <!-- <input type="date" id="issue-date" name="issue-date" required /> -->
+            <input
+              type="date"
+              id="issue-date"
+              name="issue-date"
+              required
+              tabindex="4"
+            />
+          </div>
+
+          <div class="label-input-wrapper">
+            <label for="weeks">Weeks:</label>
+            <select id="weeks" name="weeks" tabindex="3" required>
+              <option value="4">4-week</option>
+              <option value="8">8-week</option>
+              <option value="13">13-week</option>
+              <option value="17">17-week</option>
+              <option value="26">26-week</option>
+              <option value="52">52-week</option>
+            </select>
+          </div>
+
+          <div class="label-input-wrapper">
+            <label for="reinvestments">Reinvestments:</label>
+            <input
+              type="number"
+              id="reinvestments"
+              name="reinvestments"
+              data-type="number"
+              inputmode="numeric"
+              required
+              value="0"
+              tabindex="5"
+            />
+          </div>
+          <div class="label-input-wrapper">
+            <label></label>
+            <button type="submit" tabindex="6">GO!</button>
+          </div>
+        </div>
+      </form>
+
+      <div id="result">
+        <div id="result-inner"></div>
+        <div class="btn-container">
+          <button id="set-issue-date">Set as Issue Date</button>
+        </div>
+        <span id="result-date-js" style="display: none;"></span>
+      </div>
+      
+
+    </div>
+    <script>
+      const calculatorForm = document.getElementById('calculator-form')
+      const resultDateSpan = document.getElementById('result-date-js')
+      const setIssueDateButton = document.getElementById('set-issue-date')
+      const issueDateInput = document.getElementById('issue-date')
+
+      calculatorForm.addEventListener('submit', event => {
+        event.preventDefault()
+        resultDateSpan.textContent = 'val'
+        toggleSetIssueDateButton();
+      })
+
+      setIssueDateButton.addEventListener('click', () => {
+        const maturityDateStr = document.getElementById('maturity-date').textContent;
+        const maturityDate = new Date(maturityDateStr);
+        const isoDateStr = maturityDate.toISOString().split('T')[0];
+        issueDateInput.value = isoDateStr;
+        resultDateSpan.textContent = ''
+        toggleSetIssueDateButton();
+      })
+
+      function toggleSetIssueDateButton(){
+        const hasResultDate = resultDateSpan.textContent.trim() !== '';
+        setIssueDateButton.style.display = hasResultDate ? 'inline-block' : 'none';
+      };
+
+      document.addEventListener('DOMContentLoaded', toggleSetIssueDateButton);
+      
+    </script>
+    <script src="/scripts/navigation.js"></script>
+
+  </body>
+</html>

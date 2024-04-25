@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Percentage Calculator Offline</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="manifest" href="/manifest.json" />
+  </head>
+  <body>
+
+    <nav>
+      <ul>
+        <li><a href="/">Tbills</a></li>
+        <li><a href="/pages/percentage.html">percentage</a></li>
+        <li><a href="/pages/maturity.html">maturity</a></li>
+      </ul>
+    </nav>
+
+    <h1>Percentage</h1>
+
+    <div>
+      <form id="calculator-form" class="form-1">
+        <div class="module-wrapper">
+          <div class="header">What is p% of x?</div>
+          <div class="row">
+            <div class="label">What is</div>
+            <div class="input-container">
+              <input
+                type="text"
+                id="input-A"
+                name="input-A"
+                data-type="decimal"
+                inputmode="decimal"
+                pattern="[0-9]*"
+                tabindex="1"
+              />
+              <span class="input-text" tabindex="-1">%</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="label">of</div>
+            <div class="input-container">
+              <input
+                type="text"
+                id="input-B"
+                name="input-B"
+                data-type="currency"
+                inputmode="decimal"
+                pattern="[0-9]*"
+                tabindex="2"
+              />
+              <span class="input-text" tabindex="-1">?</span>
+            </div>
+          </div>
+          <div>
+            <div class="label">y =</div>
+          </div>
+          <div class="result-row">
+            <div id="resultContainer-1" class="result-container"></div>
+          </div>
+          <div class="formula">y = x * p / 100</div>
+        </div>
+      </form>
+
+      <form id="calculator-form" class="form-2">
+        <div class="module-wrapper">
+          <div class="header">x is what percent of y?</div>
+          <div class="row">
+            <div class="input-container">
+              <input
+                type="text"
+                id="input-C"
+                name="input-C"
+                data-type="currency"
+                inputmode="decimal"
+                pattern="[0-9]*"
+                tabindex="3"
+              />
+              <span class="input-text" tabindex="-1">is what percent of</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-container">
+              <input
+                type="text"
+                id="input-D"
+                name="input-D"
+                data-type="currency"
+                inputmode="decimal"
+                pattern="[0-9]*"
+                tabindex="4"
+              />
+              <span class="input-text" tabindex="-1">?</span>
+            </div>
+          </div>
+          <div>
+            <div class="label">p =</div>
+          </div>
+          <div class="result-row">
+            <div id="resultContainer-2" class="result-container"></div>
+          </div>
+          <div class="formula">p = x * 100 / y</div>
+        </div>
+      </form>
+
+      <form id="calculator-form" class="form-3">
+        <div class="module-wrapper">
+          <div class="header">x is p% of what?</div>
+          <div class="row">
+            <div class="input-container">
+              <input
+                type="text"
+                id="input-E"
+                name="input-E"
+                data-type="currency"
+                inputmode="decimal"
+                pattern="[0-9]*"
+                tabindex="5"
+              />
+              <span class="input-text" tabindex="-1">is</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-container">
+              <input
+                type="text"
+                id="input-F"
+                name="input-F"
+                data-type="decimal"
+                inputmode="decimal"
+                pattern="[0-9]*"
+                tabindex="6"
+              />
+              <span class="input-text" tabindex="-1">% of what?</span>
+            </div>
+          </div>
+          <div>
+            <div class="label">y =</div>
+          </div>
+          <div class="result-row">
+            <div id="resultContainer-3" class="result-container"></div>
+          </div>
+          <div class="formula">y = x * 100 / p</div>
+        </div>
+      </form>
+    </div>
+
+    <!-- calculator functions: -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        document
+          // .querySelectorAll("input[data-type='currency']")
+          .querySelectorAll("input")
+          .forEach(function (input) {
+            input.addEventListener('input', function () {
+              percentage_1()
+              percentage_2()
+              percentage_3()
+            })
+          })
+      })
+
+      function percentage_1() {
+        const value_a = document.getElementById('input-A').value
+        const value_b = document.getElementById('input-B').value
+
+        // Remove commas and convert to numbers
+        const percentage = parseFloat(value_a.replace(/,/g, ''))
+        const value = parseFloat(value_b.replace(/,/g, ''))
+
+        if (!isNaN(percentage) && !isNaN(value)) {
+          const result = (percentage / 100) * value
+          const formatted = new Intl.NumberFormat().format(result)
+          displayResult(formatted, 'resultContainer-1')
+        } else {
+          displayResult('', 'resultContainer-1')
+        }
+      }
+
+      function percentage_2() {
+        const value_c = document.getElementById('input-C').value
+        const value_d = document.getElementById('input-D').value
+
+        // Remove commas and convert to numbers
+        const x = parseFloat(value_c.replace(/,/g, ''))
+        const y = parseFloat(value_d.replace(/,/g, ''))
+
+        if (!isNaN(x) && !isNaN(y) && y !== 0) {
+          const percentage = (x * 100) / y
+          const formatted = `${new Intl.NumberFormat().format(percentage)}%`
+          displayResult(formatted, 'resultContainer-2')
+        } else {
+          displayResult('', 'resultContainer-2')
+        }
+      }
+
+      function percentage_3() {
+        const value_e = document.getElementById('input-E').value
+        const value_f = document.getElementById('input-F').value
+
+        const x = parseFloat(value_e.replace(/,/g, ''))
+        const y = parseFloat(value_f.replace(/,/g, ''))
+
+        if (!isNaN(x) && !isNaN(y) && y !== 0) {
+          const percentage = (x / y) * 100
+          const formatted = new Intl.NumberFormat().format(percentage)
+          displayResult(formatted, 'resultContainer-3')
+        } else {
+          displayResult('', 'resultContainer-3')
+        }
+      }
+
+      function displayResult(result, containerId) {
+        const resultContainer = document.getElementById(containerId)
+        resultContainer.textContent = result
+      }
+    </script>
+
+    <!-- Format currency inputs: -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        document
+          .querySelectorAll("input[data-type='currency']")
+          .forEach(function (input) {
+            input.addEventListener('input', function () {
+              formatCurrency(this)
+            })
+            input.addEventListener('blur', function () {
+              formatCurrency(this, 'blur')
+            })
+          })
+      })
+
+      function formatNumber(n) {
+        // format number 1000000 to 1,234,567
+        return n.replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+      }
+
+      function formatCurrency(input, blur) {
+        // get input value
+        var input_val = input.value
+
+        // don't validate empty input
+        if (input_val === '') {
+          return
+        }
+
+        // check for decimal
+        if (input_val.indexOf('.') >= 0) {
+          // get position of first decimal
+          // this prevents multiple decimals from
+          // being entered
+          var decimal_pos = input_val.indexOf('.')
+
+          // split number by decimal point
+          var left_side = input_val.substring(0, decimal_pos)
+          var right_side = input_val.substring(decimal_pos)
+
+          // add commas to left side of number
+          left_side = formatNumber(left_side)
+
+          // validate right side
+          right_side = formatNumber(right_side)
+
+          // On blur make sure 2 numbers after decimal
+          if (blur === 'blur') {
+            right_side += '00'
+          }
+
+          // Limit decimal to only 2 digits
+          right_side = right_side.substring(0, 2)
+
+          // join number by .
+          input_val = left_side + '.' + right_side
+        } else {
+          // no decimal entered
+          // add commas to number
+          // remove all non-digits
+          input_val = formatNumber(input_val)
+
+          // final formatting
+          if (blur === 'blur') {
+            input_val += '.00'
+          }
+        }
+
+        // send updated string to input
+        input.value = input_val
+      }
+    </script>
+    <script src="/scripts/navigation.js"></script>
+  </body>
+</html>

@@ -14,9 +14,6 @@
       import sys
       print("version: ", sys.version)
     </script>
-    <!-- <py-config> 
-        interpreter = "/pyodide/pyodide.mjs" 
-    </py-config> -->
     <script type="py" config="config.json">
       from pyscript import document
       from treasury_bills import Treasury
@@ -35,14 +32,13 @@
         result = treasury.calculate_and_parse(investment, high_rate, weeks, issue_date, reinvestments)
         document.getElementById('result').innerHTML = result
         return
-
-      # document.getElementById('calculator-form').addEventListener('submit', calculate)
     </script>
+    
     <nav>
       <ul>
         <li><a href="/">Tbills</a></li>
-        <li><a href="percentage.html">percentage</a></li>
-        <li><a href="maturity.html">maturity</a></li>
+        <li><a href="/pages/percentage.html">percentage</a></li>
+        <li><a href="/pages/maturity.html">maturity</a></li>
       </ul>
     </nav>
 
