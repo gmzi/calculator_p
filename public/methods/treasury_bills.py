@@ -1,4 +1,4 @@
-from helpers import calculate_price, is_rounded, weeks_to_days, maturity_date, format_currency, format_percentage, format_int
+from helpers import calculate_price, is_rounded, weeks_to_days, maturity_date
 from html_parser import create_table, create_table_maturity
 
 class Response:
@@ -8,14 +8,6 @@ class Response:
     self.code = code
   
 class Treasury:
-  """A class to greet people."""
-  def hello(self, name):
-    return Response(f"Hello, {name}!", "success", 200)
-  
-  def format_input(self, num, decimal_places):
-     formatted_input = format_currency(num, decimal_places)
-     return formatted_input
-  
   def calculate_and_parse(self, investment, high_rate, weeks, issue_date, reinvestments):
     days = weeks_to_days(weeks)
     price = calculate_price(high_rate, days)
@@ -66,24 +58,23 @@ def calculate(investment, price, weeks, issue_date=False, reinvestments=0):
         maturity_initial = "-*-"
         maturity_with_reinvestments = "-*-"
     
-    f_price = format_currency(price, 6)
-    f_discount = format_currency(discount, 6)
-    f_total_interest = format_currency(total_interest_rounded, 2)
+    f_price = "${:,.6f}".format(price)
+    f_discount = "${:,.6f}".format(discount)
+    f_total_interest = "${:,.2f}".format(total_interest_rounded)
     f_months_to_maturity = "{:,.2f}".format(months_to_maturity)
-    f_investment = format_currency(investment, 2)
-    f_bills_I_can_buy_with_my_budget = format_int(int(bills_I_can_buy_with_my_budget))
-    f_amount_to_be_debited = format_currency(amount_to_be_debited, 2)
-    f_day_interest = format_currency(day_interest, 6)
-    f_monthly_interest = format_percentage(monthly_interest, 3)
-    f_total_interest_monthly = format_percentage(total_interest_monthly, 3)
-    f_day_interest_by_year = format_percentage(day_interest_by_year, 3)
+    f_investment = "${:,.2f}".format(investment)
+    f_bills_I_can_buy_with_my_budget = "{:,}".format(int(bills_I_can_buy_with_my_budget))
+    f_amount_to_be_debited = "${:,.2f}".format(amount_to_be_debited)
+    f_day_interest = "${:,.6f}".format(day_interest)
+    f_monthly_interest = "{:,.3f}%".format(monthly_interest)
+    f_total_interest_monthly = "{:,.3f}%".format(total_interest_monthly)
+    f_day_interest_by_year = "{:,.3f}%".format(day_interest_by_year)
         
     labels_values = [
         ("Price per 100:", f"{f_price}"),
         ("Discount:", f"{f_discount}"),
         ("Total interest if YTM[*]", f"{f_total_interest}"),
         ("Maturity date:", maturity_initial),
-        (f"Maturity date with {reinvestments} reinvestments: ", maturity_with_reinvestments ),
         ("Months to maturity: ", f_months_to_maturity),
         ("Budget:", f"{f_investment}"),
         ("Bills Bought:", f"{f_bills_I_can_buy_with_my_budget}"),

@@ -1,4 +1,3 @@
-import time
 from datetime import datetime, timedelta
 
 
@@ -42,56 +41,17 @@ def weeks_to_days(weeks):
     else:
         return 0
 
-def maturity_date(issue_date, days, reinvestments=0):
-    issue_date_parts = issue_date.split('-')
-    year = int(issue_date_parts[0])
-    month = int(issue_date_parts[1])
-    day = int(issue_date_parts[2])
+def maturity_date(issue_date, days_to_maturity, reinvestments=0):
+    issue_date_obj = datetime.strptime(issue_date, '%Y-%m-%d')
 
-    issue_timestamp = time.mktime((year, month, day, 0, 0, 0, 0, 0, -1))
-
-    total_days = days
+    total_days = days_to_maturity
 
     if reinvestments > 0:
-        periods_to_count = reinvestments + 1
-        total_days *= periods_to_count
+       periods_to_count = reinvestments + 1
+       total_days = days_to_maturity *  periods_to_count
 
-    maturity_timestamp = issue_timestamp + total_days * 24 * 60 * 60
+    # Calculate maturity date
+    maturity_date_obj = issue_date_obj + timedelta(days=total_days)
 
-    # Format the maturity date to MM-DD-YYYY
-    formatted_maturity_date = time.strftime(
-        "%m/%d/%Y", time.localtime(maturity_timestamp))
-
-    return formatted_maturity_date
-
-def format_currency(amount, decimal_places):
-    integer_part, decimal_part = str(amount).split('.')
-    integer_formatted = ''
-    for i, digit in enumerate(reversed(integer_part)):
-        if i > 0 and i % 3 == 0:
-            integer_formatted = ',' + integer_formatted
-        integer_formatted = digit + integer_formatted
-
-    decimal_part = decimal_part[:decimal_places]
-    return '${}.{}'.format(integer_formatted, decimal_part)
-
-
-def format_percentage(amount, decimal_places):
-    integer_part, decimal_part = str(amount).split('.')
-    integer_formatted = ''
-    for i, digit in enumerate(reversed(integer_part)):
-        if i > 0 and i % 3 == 0:
-            integer_formatted = ',' + integer_formatted
-        integer_formatted = digit + integer_formatted
-    decimal_part = decimal_part[:decimal_places]
-    return '{}.{}%'.format(integer_formatted, decimal_part)
-
-
-def format_int(amount):
-    integer_part = str(amount)
-    integer_formatted = ''
-    for i, digit in enumerate(reversed(integer_part)):
-        if i > 0 and i % 3 == 0:
-            integer_formatted = ',' + integer_formatted
-        integer_formatted = digit + integer_formatted
-    return '{}'.format(integer_formatted)
+    # Convert maturity date back to string
+    return maturity_date_obj.strftime('%m/%d/%Y')
