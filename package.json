@@ -1,0 +1,11 @@
+{
+  "name": "calculator",
+    "version": "0.1.0",
+    "scripts": {
+        "dev": "python3 -m http.server -d ./public/"
+    },
+  "dependencies": {
+    "@pyscript/core": "^0.4.23",
+    "pyodide": "^0.25.1"
+  }
+}

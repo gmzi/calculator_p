@@ -1,0 +1,8 @@
+{
+    "interpreter": "/pyodide/pyodide.mjs",
+    "files": {
+        "/methods/treasury_bills.py": "",
+        "/methods/helpers.py": "",
+        "/methods/html_parser.py": ""
+    } 
+}
