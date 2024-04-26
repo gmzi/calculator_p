@@ -141,6 +141,18 @@ nav li a:hover {
   border-radius: 2px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
+
+.active:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to left, #b4a48c, #383737);
+  border-radius: 2px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
 /* --------------------------------------- */
 /* --------------------------------------- */
 
