@@ -233,15 +233,26 @@ a {
     rgba(194, 135, 26, 0.674)
   );
 }
-
 .form-1 {
-  background: linear-gradient(to bottom, #733ad5d3, #d53a9ccd);
+  background: linear-gradient(
+    to right,
+    rgba(175, 140, 75, 0.674),
+    rgba(171, 122, 29, 0.674)
+  );
 }
 .form-2 {
-  background: linear-gradient(to bottom, #733ad5d3, #d53a9ccd);
+  background: linear-gradient(
+    to left,
+    rgba(175, 140, 75, 0.674),
+    rgba(171, 122, 29, 0.674)
+  );
 }
 .form-3 {
-  background: linear-gradient(to bottom, #733ad5d3, #d53a9ccd);
+  background: linear-gradient(
+    to right,
+    rgba(175, 140, 75, 0.674),
+    rgba(171, 122, 29, 0.674)
+  );
 }
 
 .module-wrapper {
@@ -328,7 +339,6 @@ input[type='text'] {
 }
 
 @media (max-width: 768px) {
-
   .label-input-wrapper {
     flex-direction: column;
   }
