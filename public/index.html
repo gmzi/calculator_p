@@ -33,14 +33,55 @@
         document.getElementById('result').innerHTML = result
         return
     </script>
-    
-    <nav>
-      <ul>
-        <li><a href="/">Tbills</a></li>
-        <li><a href="/pages/percentage.html">percentage</a></li>
-        <li><a href="/pages/maturity.html">maturity</a></li>
-      </ul>
-    </nav>
+    <header id="nav-menu" aria-label="navigation bar">
+      <div class="container">
+        <div class="nav-start">
+          <a class="logo" href="/">
+            <img
+              src="/assets/images/logo.png"
+              width="35"
+              height="35"
+              alt="Inc Logo"
+            />
+          </a>
+          <nav class="menu">
+            <ul class="menu-bar">
+              <li><a class="nav-link" href="/">Tbills</a></li>
+              <li><a class="nav-link" href="/pages/percentage.html">percentage</a></li>
+              <li><a class="nav-link" href="/pages/maturity.html">maturity</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="nav-end">
+          <button
+            id="hamburger"
+            aria-label="hamburger"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <i class="bx bx-menu" aria-hidden="true">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-square-menu"
+              >
+                <rect width="18" height="18" x="3" y="3" rx="2" />
+                <path d="M7 8h10" />
+                <path d="M7 12h10" />
+                <path d="M7 16h10" />
+              </svg>
+            </i>
+          </button>
+        </div>
+      </div>
+    </header>
 
     <h1>Treasury Bills</h1>
 
@@ -180,5 +221,6 @@
       }
     </script>
     <script src="/scripts/navigation.js"></script>
+    <script src="/scripts/dropdown.js"></script>
   </body>
 </html>

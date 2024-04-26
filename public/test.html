@@ -6,7 +6,7 @@
     <title>Calculator Offline</title>
     <script type="module" src="/pyscript/core.js"></script>
     <link rel="stylesheet" href="/pyscript/core.css" />
-    <link rel="stylesheet" href="styles.css" />
+    <!-- <link rel="stylesheet" href="styles.css" /> -->
     <link rel="manifest" href="manifest.json" />
   </head>
   <body>
@@ -17,21 +17,27 @@
     <script type="py" config="config.json">
       from pyscript import document
       from treasury_bills import Treasury
-      import locale
-
-      def format_currency(number):
-        locale.setlocale(locale.LC_ALL, '')
-
-        formatted_currency = locale.currency(number, grouping=True)
-
-        return formatted_currency
-
-      num_to_f = 1234567.123454
-      formatted = format_currency(num_to_f)
-      print(formatted)
     </script>
 
     <h1>Test</h1>
+
+    <button
+      id="hamburger"
+      aria-label="hamburger"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
+      <i class="bx bx-menu" aria-hidden="true">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path>
+        </svg>
+      </i>
+    </button>
 
     <script src="/scripts/navigation.js"></script>
   </body>
