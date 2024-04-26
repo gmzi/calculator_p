@@ -18,9 +18,7 @@ That's it. It can show all the information together or splitted, but that's all.
 
 Tackle tasks in this order from top to bottom:
 
-- Style navbar for mobile. (it's looking weird on mobile). Follow [this](https://blog.logrocket.com/create-responsive-mobile-menu-with-css-no-javascript/)
-- active nav link underline not showing in prod site. If it's too much to get it to work just go with a normal underline, or perharps another approach. Move on there's too much to do. 
-- Change border color of percentage calculators. It's too aggressive, use the border gradient of maturity calculator. 
+- style nav menu on mobile. Add a cool blurred background width and height 100% and you're done.
 - A "security history" endpoint. You can select 4, 8, 26, etc. week security. The page will fetch TD API, bring auction history, loop over the data and extract your selected type of security and display the "high rate", price, etc, So you can check auction results for one type of bill instead of having to go through all of them or having to download the .csv file and process it. 
 This is the API endpoint to fetch: https://www.treasurydirect.gov/TA_WS/securities/auctioned?format=json&type=Bill
 If it's not too heavy, displaying a graphic would be cool, but not necessary. If there's no internet connection just return a warning and suspend the whole process, that's all there is, so it won't brake the app offline.

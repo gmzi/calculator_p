@@ -38,6 +38,12 @@
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
+
+  --color-btn: white;
+  --color-btn-border: 1px solid rgba(116, 247, 252, 0.849);
+  --color-btn-background: #262626f9;
+  --color-btn-hover: rgba(249, 161, 252, 0.825);
+  --color-btn-box-shadow: 0 0.15rem 0.3rem rgba(0, 0, 0, 0.15), inset 0 0.1rem 0.2rem #fff,
 }
 
 @media (prefers-color-scheme: dark) {
@@ -70,6 +76,12 @@
     --callout-border-rgb: 108, 108, 108;
     --card-rgb: 100, 100, 100;
     --card-border-rgb: 200, 200, 200;
+
+    --color-btn-border: 1px solid rgba(173, 249, 251, 0.675);
+    --color-btn: black;
+    --color-btn-background: #f4f4f4f1;
+    --color-btn-hover: rgba(204, 200, 205, 0.499);
+    --color-btn-box-shadow: 0 0.15rem 0.3rem rgba(88, 88, 88, 0.085), inset 0 0.1rem 0.2rem rgba(17, 17, 17, 0.169),
   }
 }
 
@@ -303,31 +315,41 @@ input[type='text'] {
 /* ------`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 button {
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none; 
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
   border: none;
-  background-color: transparent;
-  cursor: pointer;
-  color: inherit;
+  color: var(--color-btn);
+  background-color: var(--color-btn-background);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
 }
 
-.btn {
+#hamburger {
+  background-color: inherit;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
   display: block;
-  background-color: var(--primary-color);
-  color: var(--white);
-  text-align: center;
-  padding: 0.6rem 1.4rem;
-  font-size: 1rem;
-  font-weight: 500;
-  border-radius: 5px;
+}
+
+
+.custom-button:hover {
+  background-color: #e0e0e0; /* Lighten the background color on hover */
+}
+
+button:hover {
+  background-color: var(--color-btn-hover);
 }
 
 .icon {
   padding: 0.5rem;
   background-color: var(--light-grey);
   border-radius: 10px;
-}
-
-.logo {
-  margin-right: 1.5rem;
 }
 
 #nav-menu {
