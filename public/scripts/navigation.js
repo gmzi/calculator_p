@@ -17,11 +17,11 @@ function makeActive() {
     navLinks.forEach(function (link) {
         const attr = link.getAttribute('href')
         if (attr === '/' && urlPart === BASE_URL) {
-            link.classList.add('active');
+            link.classList.add('active-page');
         } else if (attr.includes(urlPart)) {
-            link.classList.add('active');
+            link.classList.add('active-page');
         } else {
-            link.classList.remove('active');
+            link.classList.remove('active-page');
         }
     })
 }

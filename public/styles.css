@@ -39,6 +39,7 @@
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
 
+  --border-bottom: 1px solid rgba(89, 89, 94, 0.721);
   --color-btn: white;
   --color-btn-border: 1px solid rgba(116, 247, 252, 0.849);
   --color-btn-background: #262626f9;
@@ -76,6 +77,8 @@
     --callout-border-rgb: 108, 108, 108;
     --card-rgb: 100, 100, 100;
     --card-border-rgb: 200, 200, 200;
+
+    --border-bottom: 1px solid rgba(217, 217, 233, .124);
 
     --color-btn-border: 1px solid rgba(173, 249, 251, 0.675);
     --color-btn: black;
@@ -136,11 +139,10 @@ nav li a:hover {
   color: black;
 }
 
-.active {
+.active-page {
   position: relative;
   padding-bottom: 2px;
   border-bottom: 2px solid rgba(218, 100, 10, 0.838);
-  /* text-decoration: underline 2px solid rgba(218, 100, 10, 0.95); */
 }
 
 /* --------------------------------------- */
@@ -154,7 +156,6 @@ nav li a:hover {
 }
 
 #set-issue-date {
-  padding: 0.3em;
   background-color: rgba(139, 106, 106, 0.752);
 }
 /* ---------------------------------------- */
@@ -337,23 +338,13 @@ button {
   display: block;
 }
 
-
-.custom-button:hover {
-  background-color: #e0e0e0; /* Lighten the background color on hover */
-}
-
 button:hover {
   background-color: var(--color-btn-hover);
 }
 
-.icon {
-  padding: 0.5rem;
-  background-color: var(--light-grey);
-  border-radius: 10px;
-}
-
 #nav-menu {
-  border-bottom: var(--border);
+  border-bottom: var(--border-bottom);
+  margin: 1em;
 }
 
 .container {
@@ -362,19 +353,18 @@ button:hover {
   justify-content: space-between;
   max-width: 1600px;
   margin: 0 auto;
-  column-gap: 2rem;
-  height: 90px;
-  padding: 1.2rem 3rem;
+  column-gap: 1rem;
+  /* height: 90px; */
+  padding: .5em .2em;
 }
 
 .menu {
   position: relative;
-  background: var(--white);
 }
 
 .menu-bar li:first-child .dropdown {
   flex-direction: initial;
-  min-width: 480px;
+  /* min-width: 480px; */
 }
 
 .menu-bar li:first-child ul:nth-child(1) {
@@ -416,7 +406,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   min-width: 230px;
-  background-color: var(--white);
+  background-color: red;
   border-radius: 10px;
   position: absolute;
   top: 36px;
