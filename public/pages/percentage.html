@@ -8,13 +8,10 @@
     <link rel="manifest" href="/manifest.json" />
   </head>
   <body>
-
     <header id="nav-menu" aria-label="navigation bar">
       <div class="container">
         <div class="nav-start">
-          <a class="logo" href="/">
-           | calpy |
-          </a>
+          <a class="logo" href="/"> | calpy | </a>
         </div>
         <div class="nav-end">
           <nav class="menu">
@@ -58,127 +55,115 @@
       </div>
     </header>
 
-    <div class="wrapper">
+    <div class="wrapper percentage">
       <h1>Percentage</h1>
-      <form id="calculator-form" class="form-1">
+
+      <form id="calculator-form" class="form-1" py-submit="calculate">
         <div class="module-wrapper">
-          <div class="header">What is p% of x?</div>
-          <div class="row">
-            <div class="label">What is</div>
-            <div class="input-container">
-              <input
-                type="text"
-                id="input-A"
-                name="input-A"
-                data-type="decimal"
-                inputmode="decimal"
-                pattern="[0-9]*"
-                tabindex="1"
-              />
-              <span class="input-text" tabindex="-1">%</span>
-            </div>
+          <h3>What is p% of x?</h3>
+          <div class="label-input-wrapper">
+            <label for="investment">What is</label>
+            <input
+              type="text"
+              id="input-A"
+              name="input-A"
+              data-type="decimal"
+              inputmode="decimal"
+              pattern="[0-9]*"
+              tabindex="1"
+            />
+            <span for="investment">%</span>
           </div>
-          <div class="row">
-            <div class="label">of</div>
-            <div class="input-container">
-              <input
-                type="text"
-                id="input-B"
-                name="input-B"
-                data-type="currency"
-                inputmode="decimal"
-                pattern="[0-9]*"
-                tabindex="2"
-              />
-              <span class="input-text" tabindex="-1">?</span>
-            </div>
+          <div class="label-input-wrapper">
+            <label for="high_rate">of</label>
+            <input
+              type="text"
+              id="input-B"
+              name="input-B"
+              data-type="currency"
+              inputmode="decimal"
+              pattern="[0-9]*"
+              required
+              tabindex="2"
+            />
+            <span for="investment">?</span>
           </div>
-          <div>
-            <div class="label">y =</div>
-          </div>
-          <div class="result-row">
+          <div class="label-input-wrapper">
+            <label>y = </label>
             <div id="resultContainer-1" class="result-container"></div>
           </div>
           <div class="formula">y = x * p / 100</div>
         </div>
       </form>
 
-      <form id="calculator-form" class="form-2">
+      <form id="calculator-form" class="form-2" py-submit="calculate">
         <div class="module-wrapper">
-          <div class="header">x is what percent of y?</div>
-          <div class="row">
-            <div class="input-container">
-              <input
-                type="text"
-                id="input-C"
-                name="input-C"
-                data-type="currency"
-                inputmode="decimal"
-                pattern="[0-9]*"
-                tabindex="3"
-              />
-              <span class="input-text" tabindex="-1">is what percent of</span>
-            </div>
+          <h3>x is what percent of y?</h3>
+          <div class="label-input-wrapper">
+            <label for="investment"></label>
+            <input
+              type="text"
+              id="input-C"
+              name="input-C"
+              data-type="currency"
+              inputmode="decimal"
+              pattern="[0-9]*"
+              tabindex="3"
+            />
+            <span for="investment">is what percent</span>
           </div>
-          <div class="row">
-            <div class="input-container">
-              <input
-                type="text"
-                id="input-D"
-                name="input-D"
-                data-type="currency"
-                inputmode="decimal"
-                pattern="[0-9]*"
-                tabindex="4"
-              />
-              <span class="input-text" tabindex="-1">?</span>
-            </div>
+          <div class="label-input-wrapper">
+            <label for="high_rate">of</label>
+            <input
+              type="text"
+              id="input-D"
+              name="input-D"
+              data-type="currency"
+              inputmode="decimal"
+              pattern="[0-9]*"
+              required
+              tabindex="4"
+            />
+            <span for="investment">?</span>
           </div>
-          <div>
-            <div class="label">p =</div>
-          </div>
-          <div class="result-row">
+          <div class="label-input-wrapper">
+            <label>p = </label>
             <div id="resultContainer-2" class="result-container"></div>
           </div>
           <div class="formula">p = x * 100 / y</div>
         </div>
       </form>
-
-      <form id="calculator-form" class="form-3">
+      <form id="calculator-form" class="form-3" py-submit="calculate">
         <div class="module-wrapper">
-          <div class="header">x is p% of what?</div>
-          <div class="row">
-            <div class="input-container">
-              <input
-                type="text"
-                id="input-E"
-                name="input-E"
-                data-type="currency"
-                inputmode="decimal"
-                pattern="[0-9]*"
-                tabindex="5"
-              />
-              <span class="input-text" tabindex="-1">is</span>
-            </div>
+          <h3>x is p% of what?</h3>
+          <div class="label-input-wrapper">
+            <label for="investment"></label>
+            <input
+              type="text"
+              id="input-E"
+              name="input-E"
+              data-type="currency"
+              inputmode="decimal"
+              pattern="[0-9]*"
+              tabindex="5"
+            />
+            <span for="investment">is</span>
           </div>
-          <div class="row">
-            <div class="input-container">
-              <input
-                type="text"
-                id="input-F"
-                name="input-F"
-                data-type="decimal"
-                inputmode="decimal"
-                pattern="[0-9]*"
-                tabindex="6"
-              />
-              <span class="input-text" tabindex="-1">% of what?</span>
-            </div>
+          <div class="label-input-wrapper">
+            <label for="investment"></label>
+            <input
+              type="text"
+              id="input-F"
+              name="input-F"
+              data-type="decimal"
+              inputmode="decimal"
+              pattern="[0-9]*"
+              tabindex="6"
+            />
+            <span for="investment">% of what?</span>
           </div>
-          <div>
-            <div class="label">y =</div>
-          </div>
-          <div class="result-row">
+          <div class="label-input-wrapper">
+            <label>y = </label>
             <div id="resultContainer-3" class="result-container"></div>
           </div>
           <div class="formula">y = x * 100 / p</div>
@@ -191,7 +176,7 @@
       document.addEventListener('DOMContentLoaded', function () {
         document
           // .querySelectorAll("input[data-type='currency']")
-          .querySelectorAll("input")
+          .querySelectorAll('input')
           .forEach(function (input) {
             input.addEventListener('input', function () {
               percentage_1()
