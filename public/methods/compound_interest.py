@@ -32,9 +32,11 @@ def calculate_compounding(
     ending_value = balance
     income = ending_value - initial_investment
     total_return = (income / initial_investment) * 100
+    annualized_total_return = total_return / years
 
     formatted_income = "${:,.2f}".format(income)
     formatted_total_return = "{:,.2f}%".format(total_return)
+    formatted_annualized_total_return = "{:,.2f}%".format(annualized_total_return)
     formatted_ending_value = "${:,.2f}".format(ending_value)
     formatted_balances = {}
     for year, balance in balances.items():
@@ -43,6 +45,7 @@ def calculate_compounding(
     labels_values = [
         ("Income: ", f"{formatted_income}"),
         ("Total Return: ", f"{formatted_total_return}"),
+        ("Annualized total return: ", f"{formatted_annualized_total_return}"),
         ("Ending value: ", f"{formatted_ending_value}")
     ]
 
