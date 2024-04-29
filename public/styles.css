@@ -127,7 +127,7 @@ nav ul {
 
 .wrapper {
   text-align: center;
-  max-width: 40em;
+  max-width: 30em;
   margin: 0 auto;
 }
 
@@ -324,7 +324,7 @@ input,
 select,
 input[type='date'] {
   padding: 0.8em;
-  margin-bottom: 1em;
+  margin: 0 0 1em .2em;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
