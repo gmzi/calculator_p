@@ -50,12 +50,12 @@ def create_grid_maturity(labels_values):
 
 def balances_grid(dict_):
     grid_html = """
-    <h5>total income by year</h5>
+    <h5>compound balances by year:</h5>
     <div style="display: grid; grid-template-columns: auto auto;" class="grid">
     """
     for key, value in dict_.items():
         grid_html += f"""
-        <div>{key}</div>
+        <div>year {key}: </div>
         <div>{value}</div>
         """
     grid_html += """

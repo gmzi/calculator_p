@@ -10,30 +10,12 @@
     <link rel="manifest" href="/manifest.json" />
   </head>
   <body>
-    <script type="py">
-      import sys
-      print("version:", sys.version)
-    </script>
-    <script type="py" config="../config.json">
-      from pyscript import document
-      from treasury_bills import Treasury
-
-      treasury = Treasury()
-
-      def calculate(e):
-        e.preventDefault()
-        weeks = int(document.getElementById('weeks').value)
-        issue_date = document.getElementById('issue-date').value
-        reinvestments = int(document.getElementById('reinvestments').value)
-        result = treasury.maturity(weeks, issue_date, reinvestments)
-        document.getElementById('result-inner').innerHTML = result
-        return
-    </script>
-
     <header id="nav-menu" aria-label="navigation bar">
       <div class="container">
         <div class="nav-start">
-          <a class="logo" href="/"> | calpy | </a>
+          <a class="logo" href="/">
+           | calpy |
+          </a>
         </div>
         <div class="nav-end">
           <nav class="menu">
@@ -44,6 +26,12 @@
               </li>
               <li>
                 <a class="nav-link" href="/pages/maturity.html">maturity</a>
+              </li>
+              <li>
+                <a class="nav-link" href="/pages/comp-interest.html">compound interest</a>
+              </li>
+              <li>
+                <a class="nav-link" href="/pages/playground.html">playground</a>
               </li>
             </ul>
           </nav>
@@ -76,6 +64,26 @@
         </div>
       </div>
     </header>
+    
+    <script type="py">
+      import sys
+      print("version:", sys.version)
+    </script>
+    <script type="py" config="../config.json">
+      from pyscript import document
+      from treasury_bills import Treasury
+
+      treasury = Treasury()
+
+      def calculate(e):
+        e.preventDefault()
+        weeks = int(document.getElementById('weeks').value)
+        issue_date = document.getElementById('issue-date').value
+        reinvestments = int(document.getElementById('reinvestments').value)
+        result = treasury.maturity(weeks, issue_date, reinvestments)
+        document.getElementById('result-inner').innerHTML = result
+        return
+    </script>
 
     <div class="wrapper">
       <h1>Maturity</h1>

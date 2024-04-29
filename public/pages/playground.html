@@ -10,28 +10,12 @@
     <link rel="manifest" href="/manifest.json" />
   </head>
   <body>
-    <script type="py">
-      import sys
-      print("version:", sys.version)
-    </script>
-    <!-- <script type="py-editor" target="result">
-      import sys
-      print(sys.version)
-    </script> -->
-    <script type="py" config="../config.json">
-      from pyscript import document
-      def calculate(e):
-        e.preventDefault()
-        code = document.getElementById('code-input').value
-        result = eval(code)
-        document.getElementById('result-inner').innerHTML = result
-        return
-    </script>
-
     <header id="nav-menu" aria-label="navigation bar">
       <div class="container">
         <div class="nav-start">
-          <a class="logo" href="/"> | calpy | </a>
+          <a class="logo" href="/">
+           | calpy |
+          </a>
         </div>
         <div class="nav-end">
           <nav class="menu">
@@ -42,6 +26,12 @@
               </li>
               <li>
                 <a class="nav-link" href="/pages/maturity.html">maturity</a>
+              </li>
+              <li>
+                <a class="nav-link" href="/pages/comp-interest.html">compound interest</a>
+              </li>
+              <li>
+                <a class="nav-link" href="/pages/playground.html">playground</a>
               </li>
             </ul>
           </nav>
@@ -74,6 +64,23 @@
         </div>
       </div>
     </header>
+    <script type="py">
+      import sys
+      print("version:", sys.version)
+    </script>
+    <!-- <script type="py-editor" target="result">
+      import sys
+      print(sys.version)
+    </script> -->
+    <script type="py" config="../config.json">
+      from pyscript import document
+      def calculate(e):
+        e.preventDefault()
+        code = document.getElementById('code-input').value
+        result = eval(code)
+        document.getElementById('result-inner').innerHTML = result
+        return
+    </script>
 
     <div class="wrapper">
       <h1>playground</h1>
