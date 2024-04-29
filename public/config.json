@@ -3,6 +3,7 @@
     "files": {
         "/methods/treasury_bills.py": "",
         "/methods/helpers.py": "",
-        "/methods/html_parser.py": ""
+        "/methods/html_parser.py": "",
+        "/methods/compound_interest.py": ""
     } 
 }

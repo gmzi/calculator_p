@@ -1,5 +1,5 @@
 from helpers import calculate_price, is_rounded, weeks_to_days, maturity_date, days_span
-from html_parser import create_table, create_table_maturity
+from html_parser import create_grid, create_grid_maturity, footer_html
 
 class Response:
   def __init__(self, content, status, code):
@@ -12,7 +12,7 @@ class Treasury:
     days = weeks_to_days(weeks)
     price = calculate_price(high_rate, days)
     labels_values = calculate(investment, price, weeks, issue_date, reinvestments)
-    html_markup = create_table(labels_values)
+    html_markup = create_grid(labels_values) + footer_html()
     return html_markup
   
   def maturity(self, weeks, issue_date, reinvestments):
@@ -24,7 +24,7 @@ class Treasury:
         ("Months to maturity: ", "{:,.2f}".format(months_to_maturity)),
         ("Days:", str(days))
     ]
-    html_markup = create_table_maturity(labels_values)
+    html_markup = create_grid_maturity(labels_values)
     return html_markup
 
 def calculate(investment, price, weeks, issue_date=False, reinvestments=0):
