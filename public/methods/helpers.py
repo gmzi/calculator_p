@@ -55,3 +55,14 @@ def maturity_date(issue_date, days_to_maturity, reinvestments=0):
 
     # Convert maturity date back to string
     return maturity_date_obj.strftime('%m/%d/%Y')
+
+def days_span(start, end):
+    """
+    start = "YYYY-m-d"
+    end = "MM/DD/YYYY"
+    print(days_span(start, end)) // 28
+    """
+    date_start = datetime.strptime(start, '%Y-%m-%d').date()
+    date_end = datetime.strptime(end, "%m/%d/%Y").date()
+    delta = date_end - date_start
+    return delta.days

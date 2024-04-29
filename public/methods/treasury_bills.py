@@ -1,4 +1,4 @@
-from helpers import calculate_price, is_rounded, weeks_to_days, maturity_date
+from helpers import calculate_price, is_rounded, weeks_to_days, maturity_date, days_span
 from html_parser import create_table, create_table_maturity
 
 class Response:
@@ -52,11 +52,11 @@ def calculate(investment, price, weeks, issue_date=False, reinvestments=0):
     total_interest_monthly = months_to_maturity * monthly_interest
 
     if issue_date:
-        maturity_initial = maturity_date(issue_date, days)
-        maturity_with_reinvestments = maturity_date(issue_date, days, reinvestments)
+        maturity = maturity_date(issue_date, days)
+        span = days_span(issue_date, maturity)
     else:
-        maturity_initial = "-*-"
-        maturity_with_reinvestments = "-*-"
+        maturity = "-*-"
+        span = "-*-"
     
     f_price = "${:,.6f}".format(price)
     f_discount = "${:,.6f}".format(discount)
@@ -74,7 +74,7 @@ def calculate(investment, price, weeks, issue_date=False, reinvestments=0):
         ("Price per 100:", f"{f_price}"),
         ("Discount:", f"{f_discount}"),
         ("Total interest if YTM[*]", f"{f_total_interest}"),
-        ("Maturity date:", maturity_initial),
+        ("Maturity date:", maturity),
         ("Months to maturity: ", f_months_to_maturity),
         ("Budget:", f"{f_investment}"),
         ("Bills Bought:", f"{f_bills_I_can_buy_with_my_budget}"),
@@ -83,7 +83,8 @@ def calculate(investment, price, weeks, issue_date=False, reinvestments=0):
         ("Monthly Interest:", f"{f_monthly_interest}"),
         ("Monthly Interest Summed Up:", f"{f_total_interest_monthly}"),
         ("Annualized interest[**]:", f"{f_day_interest_by_year} (-mind to divide it monthly-)"),
-        ("Days:", str(days))
+        ("Days:", str(days)),
+        ("Days span:", str(span))
     ]
 
     return labels_values
