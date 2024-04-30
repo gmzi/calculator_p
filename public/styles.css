@@ -457,7 +457,7 @@ input[type='text'] {
 @media (max-width: 767px) {
   .result-container,
   input {
-    text-align: center;
+    /* text-align: center; */
     max-width: 60%;
   }
   .label-input-wrapper {
