@@ -91,19 +91,18 @@
         <div class="module-wrapper">
           <div class="label-input-wrapper">
             <label for="issue-date">Issue Date:</label>
-            <!-- <input type="date" id="issue-date" name="issue-date" required /> -->
             <input
               type="date"
               id="issue-date"
               name="issue-date"
               required
-              tabindex="4"
+              tabindex="1"
             />
           </div>
 
           <div class="label-input-wrapper">
             <label for="weeks">Weeks:</label>
-            <select id="weeks" name="weeks" tabindex="3" required>
+            <select id="weeks" name="weeks" tabindex="2" required>
               <option value="4">4-week</option>
               <option value="8">8-week</option>
               <option value="13">13-week</option>
@@ -114,7 +113,7 @@
           </div>
 
           <div class="label-input-wrapper">
-            <label for="reinvestments">Reinvestments:</label>
+            <label for="reinvestments">Reinv.:</label>
             <input
               type="number"
               id="reinvestments"
@@ -123,12 +122,12 @@
               inputmode="numeric"
               required
               value="0"
-              tabindex="5"
+              tabindex="3"
             />
           </div>
           <div class="label-input-wrapper">
             <label></label>
-            <button type="submit" tabindex="6" class="btn">GO!</button>
+            <button type="submit" tabindex="4" class="btn">GO!</button>
           </div>
         </div>
       </form>
@@ -141,6 +140,7 @@
         <span id="result-date-js" style="display: none"></span>
       </div>
     </div>
+    <!-- reuse date output as input -->
     <script>
       const calculatorForm = document.getElementById('calculator-form')
       const resultDateSpan = document.getElementById('result-date-js')
