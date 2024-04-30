@@ -1,10 +1,18 @@
 # RUN
 
 
-- Run with one of the following methods:
+- Run python client:
     - `python3 -m http.server -d ./public/`
+- Run node server: 
+    - `node ./server/data.js`
+- Run from script: 
     - `npm run dev`
-- http://localhost:8000/
+- Stop:
+    - `npm run stop`
+
+Ports: 
+- `http://localhost:8000` frontend.
+- `http://localhost:3000/server/data` data api.
 
 ## Development
 
@@ -21,6 +29,7 @@ Tackle tasks in this order from top to bottom:
 - A "security filter" endpoint. You can select 4, 8, 26, etc. week security. The page will fetch TD API, bring auction history, loop over the data and extract your selected type of security and display the "high rate", price, etc, So you can check auction results for one type of bill instead of having to go through all of them or having to download the .csv file and process it. 
 This is the API endpoint to fetch: https://www.treasurydirect.gov/TA_WS/securities/auctioned?format=json&type=Bill
 If it's not too heavy, displaying a graphic would be cool, but not necessary. If there's no internet connection just return a warning and suspend the whole process, that's all there is, so it won't brake the app offline.
+Implementation: try a node express server route. If it doesn't work, use a cloudflare worker.
 - add a separate maturity date calculator (display a calendar, pick a date and a time span, and the calculator will show you maturity highlighted in the calendar. You can then click on the new date, set a new term, and will do it again so you can handle reinvestmentes in a super dumb and useful way. )
 - Implement workers for offline operation. Here are the docs:
     - [master docs](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Offline_and_background_operation)

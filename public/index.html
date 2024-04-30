@@ -88,6 +88,7 @@
         document.getElementById('result').innerHTML = result
         return
     </script>
+
     <div class="wrapper">
       <h1>Treasury Bills</h1>
       <form id="calculator-form" class="form-0" py-submit="calculate">
@@ -153,6 +154,65 @@
       <div id="result"></div>
     </div>
 
+    <div class="wrapper">
+      <h2>Filter auction results</h2>
+
+      <form id="filterForm">
+        <select id="weeks-to-fetch" name="weeks-to-fetch" tabindex="5" required>
+          <option value="4">4-week</option>
+          <option value="8">8-week</option>
+          <option value="13">13-week</option>
+          <option value="17">17-week</option>
+          <option value="26">26-week</option>
+          <option value="52">52-week</option>
+        </select>
+        <button type="button" onclick="fetchResults()" class="btn">Fetch Results</button>
+      </form>
+      <div id="resultsGrid"></div>
+    </div>
+
+    <script>
+      async function fetchResults() {
+        const weekInput = document.getElementById('weeks-to-fetch').value;
+        try {
+          console.log('lets go')
+          const response = await fetch('/server/data');
+          const data = await response.json();
+          console.log(data)
+          return
+          const filteredData = filterResults(data, weekInput);
+          displayResults(filteredData);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      }
+  
+      function filterResults(data, weekInput) {
+        return data.filter(item => item.weeks === parseInt(weekInput));
+      }
+  
+      function displayResults(filteredData) {
+        const resultsGrid = document.getElementById('resultsGrid');
+        resultsGrid.innerHTML = ''; // Clear previous results
+  
+        if (filteredData.length === 0) {
+          resultsGrid.innerHTML = '<p>No results found.</p>';
+        } else {
+          const table = document.createElement('table');
+          const headerRow = table.insertRow();
+          headerRow.innerHTML = '<th>ID</th><th>Name</th><th>Weeks</th>'; // Assuming these are the fields
+  
+          filteredData.forEach(item => {
+            const row = table.insertRow();
+            row.innerHTML = `<td>${item.id}</td><td>${item.name}</td><td>${item.weeks}</td>`; // Adjust fields accordingly
+          });
+  
+          resultsGrid.appendChild(table);
+        }
+      }
+    </script>
+    
+     <!--format currency input  -->
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         document

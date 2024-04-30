@@ -1,11 +1,13 @@
 {
   "name": "calculator",
-    "version": "0.1.0",
-    "scripts": {
-        "dev": "python3 -m http.server -d ./public/"
-    },
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "./run.sh",
+    "stop": "./stop.sh"
+  },
   "dependencies": {
     "@pyscript/core": "^0.4.23",
+    "express": "^4.19.2",
     "pyodide": "^0.25.1"
   }
 }
