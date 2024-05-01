@@ -176,8 +176,8 @@
         const weeksInput = document.getElementById('weeks-to-fetch').value;
         try {
           const BASE_URL = 'https://calpy.vercel.app'
-          const response = await fetch(`${BASE_URL}/server/data?weeks=${weeksInput}`);
-          // const response = await fetch(`http://localhost:3000/server/data?weeks=${weeksInput}`);
+          // const response = await fetch(`${BASE_URL}/server/data?weeks=${weeksInput}`);
+          const response = await fetch(`http://localhost:3000/server/data?weeks=${weeksInput}`);
           const data = await response.json();
           displayResults(data);
           return;
