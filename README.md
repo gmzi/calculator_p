@@ -3,16 +3,13 @@
 
 - Run python client:
     - `python3 -m http.server -d ./public/`
-- Run node server: 
-    - `node ./server/data.js`
 - Run from script: 
     - `npm run dev`
-- Stop:
-    - `npm run stop`
+
+There are ./run.sh and ./stop.sh, backup in case we need to implement a local server. 
 
 Ports: 
 - `http://localhost:8000` frontend.
-- `http://localhost:3000/server/data` data api.
 
 ## Development
 

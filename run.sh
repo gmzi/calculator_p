@@ -2,6 +2,6 @@
 
 python3 -m http.server -d ./public/ &
 
-node server/data.js &
+# node server/data.js &
 
 # wait
