@@ -173,22 +173,15 @@
 
     <script>
       async function fetchResults() {
-        const weekInput = document.getElementById('weeks-to-fetch').value;
+        const weeksInput = document.getElementById('weeks-to-fetch').value;
         try {
-          console.log('lets go')
-          const response = await fetch('/server/data');
+          const response = await fetch(`http://localhost:3000/server/data?weeks=${weeksInput}`);
           const data = await response.json();
-          console.log(data)
-          return
-          const filteredData = filterResults(data, weekInput);
-          displayResults(filteredData);
+          displayResults(data);
+          return;
         } catch (error) {
           console.error('Error fetching data:', error);
         }
-      }
-  
-      function filterResults(data, weekInput) {
-        return data.filter(item => item.weeks === parseInt(weekInput));
       }
   
       function displayResults(filteredData) {
@@ -200,11 +193,11 @@
         } else {
           const table = document.createElement('table');
           const headerRow = table.insertRow();
-          headerRow.innerHTML = '<th>ID</th><th>Name</th><th>Weeks</th>'; // Assuming these are the fields
+          headerRow.innerHTML = '<th>cusip</th><th>High rate</th><th>term</th><th>issue date</th>';
   
           filteredData.forEach(item => {
             const row = table.insertRow();
-            row.innerHTML = `<td>${item.id}</td><td>${item.name}</td><td>${item.weeks}</td>`; // Adjust fields accordingly
+            row.innerHTML = `<td>${item.cusip}</td><td>${item.highDiscountRate}</td><td>${item.securityTermDayMonth}</td><td>${item.issueDate}</td>`;
           });
   
           resultsGrid.appendChild(table);
