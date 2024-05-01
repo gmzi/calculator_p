@@ -26,6 +26,7 @@ That's it. It can show all the information together or splitted, but that's all.
 
 Tackle tasks in this order from top to bottom:
 
+- Research if pyscript has a fetch method that works with CORS blocking. Maybe they have some kind of fetch api. If not:
 - Solve index.html -> script -> fetchResults(), the fetch url is localhost, will have to find out how to manage this. Deploy to prod with a test response and find out, worst case scenario we hard code server url. 
 - Add JWT or some api key logic to the server endpoint, we don't want to mess things up here. Make it robust, this stuff is dangerous. Add an authentication layer to prevent abuse. 
 - A "security filter" endpoint. You can select 4, 8, 26, etc. week security. The page will fetch TD API, bring auction history, loop over the data and extract your selected type of security and display the "high rate", price, etc, So you can check auction results for one type of bill instead of having to go through all of them or having to download the .csv file and process it. 

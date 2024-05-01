@@ -3,8 +3,19 @@ const express = require('express')
 const app = express()
 const port = '3000'
 
+
+app.get('/server/hello', async(req, res) => {
+  try{
+    res.json({hi: "hi"})
+  } catch(e){
+    console.error('Error fetching data:', error);
+    res.status(500).json({error: error})
+  }
+})
+
 app.get('/server/data', async (req, res) => {
   try {
+
     function filterData(data){
       const result = data.map((item) => ({
         cusip: item.cusip,
@@ -58,3 +69,23 @@ app.get('/server/data', async (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
+
+
+// const express = require('express')
+
+// const app = express()
+// const port = '3000'
+
+
+// app.get('/server/hello', async(req, res) => {
+//   try{
+//     res.json({hi: "hi"})
+//   } catch(e){
+//     console.error('Error fetching data:', error);
+//     res.status(500).json({error: error})
+//   }
+// })
+
+// app.listen(port, () => {
+//   console.log(`Example app listening on port ${port}`)
+// })
