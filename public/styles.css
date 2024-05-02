@@ -415,6 +415,11 @@ table td {
   border-bottom: 1px solid rgba(48, 48, 137, 0.582);
 }
 
+table td {
+  border-right: 1px solid rgba(48, 48, 137, 0.582);
+  padding: .2em
+}
+
 table {
   margin: .5rem;
   padding: .5rem;
@@ -458,6 +463,9 @@ table {
 @media (max-width: 600px) {
   .right-container {
     display: none;
+  }
+  table {
+    font-size: small;
   }
 }
 
