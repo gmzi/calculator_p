@@ -146,7 +146,7 @@
           </div>
           <div class="label-input-wrapper">
             <label></label>
-            <button type="submit" tabindex="6" class="btn">GO!</button>
+            <button type="submit" class="btn" tabindex="5">GO!</button>
           </div>
         </div>
       </form>
@@ -158,7 +158,7 @@
       <h2>Filter auction results</h2>
 
       <form id="filterForm">
-        <select id="weeks-to-fetch" name="weeks-to-fetch" tabindex="5" required>
+        <select id="weeks-to-fetch" name="weeks-to-fetch" required tabindex="6">
           <option value="4">4-week</option>
           <option value="8">8-week</option>
           <option value="13">13-week</option>
@@ -166,7 +166,7 @@
           <option value="26">26-week</option>
           <option value="52">52-week</option>
         </select>
-        <button type="button" onclick="fetchResults()" class="btn">
+        <button type="button" onclick="fetchResults()" class="btn" tabindex="7">
           Fetch Results
         </button>
       </form>
@@ -193,17 +193,31 @@
         if (filteredData.length === 0) {
           resultsGrid.innerHTML = '<p>No results found.</p>'
         } else {
+          const tableContainer = document.createElement('div')
+          tableContainer.setAttribute('style', 'display: grid; grid-template-columns: auto auto;');
+          tableContainer.classList.add('grid');
           const table = document.createElement('table')
           const headerRow = table.insertRow()
-          headerRow.innerHTML =
-            '<th>cusip</th><th>High rate</th><th>term</th><th>issue date</th>'
+          headerRow.innerHTML = `<th>High rate</th>
+            <th>issue date</th>
+            <th>Price per 100</th>
+            <th>term day month</th>
+            <th>cusip</th>
+            `
 
           filteredData.forEach(item => {
             const row = table.insertRow()
-            row.innerHTML = `<td>${item.cusip}</td><td>${item.highDiscountRate}</td><td>${item.securityTermDayMonth}</td><td>${item.issueDate}</td>`
+            row.innerHTML = `<td>${parseFloat(item.highDiscountRate).toFixed(3) || '-'}</td>
+            <td>${item.issueDate.substring(0, 10)}</td>
+            <td>${item.pricePer100}</td>
+            <td>${item.securityTermDayMonth}</td>
+            <td>${item.cusip}</td>
+            `
           })
 
-          resultsGrid.appendChild(table)
+          tableContainer.appendChild(table)
+          // resultsGrid.appendChild(table)
+          resultsGrid.appendChild(tableContainer)
         }
       }
     </script>

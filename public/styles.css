@@ -410,8 +410,15 @@ input[type='text'] {
   text-align: left;
 }
 
-.grid div {
+.grid div, 
+table td {
   border-bottom: 1px solid rgba(48, 48, 137, 0.582);
+}
+
+table {
+  margin: .5rem;
+  padding: .5rem;
+  border: 1px solid rgba(163, 103, 148, 0.888);
 }
 
 .notes-list {
