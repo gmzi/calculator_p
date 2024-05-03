@@ -84,6 +84,11 @@ self.addEventListener('install', async (event) => {
         // './package-lock.json',
         // './package.json',
         './index.html',
+        './styles.css',
+        './app.js',
+        './manifest.json',
+        './assets/icons/icon-120.png',
+        './config.json',
         './pages/comp-interest.html',
         './pages/maturity.html',
         './pages/percentage.html',
@@ -131,8 +136,6 @@ self.addEventListener('install', async (event) => {
         './pyscript/xterm_addon-web-links-Cnej-nJ6.js.map',
         './pyscript/zip-BVYJ4_a2.js',
         './pyscript/zip-BVYJ4_a2.js.map',
-
-
     ]));
 });
 
