@@ -93,6 +93,10 @@ self.addEventListener('install', async (event) => {
         './pages/maturity.html',
         './pages/percentage.html',
         './pages/playground.html',
+        './methods/compound_interest.py',
+        './methods/helpers.py',
+        './methods/html_parser.py',
+        './methods/treasury_bills.py',
 
         './pyscript/codemirror-btSUM_0g.js',
         './pyscript/codemirror-btSUM_0g.js.map',

@@ -2,7 +2,7 @@
     "name": "calculator",
     "short_name": "calculator",
     "start_url": "/",
-    "display": "standalone",
+    "display": "browser",
     "background_color": "#90cdf4",
     "orientation": "portrait-primary",
     "description": "calculator using python",
