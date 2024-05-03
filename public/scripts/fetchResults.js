@@ -20,7 +20,7 @@ async function fetchResults() {
 
 function displayResults(filteredData) {
     const resultsGrid = document.getElementById('resultsGrid')
-    resultsGrid.innerHTML = '' // Clear previous results
+    resultsGrid.innerHTML = ''
 
     if (filteredData.length === 0) {
         resultsGrid.innerHTML = '<p>No results found.</p>'
@@ -50,7 +50,6 @@ function displayResults(filteredData) {
         <td>${item.cusip}</td>
         `
         })
-
         tableContainer.appendChild(table)
         resultsGrid.appendChild(tableContainer)
     }

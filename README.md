@@ -28,9 +28,8 @@ That's it. It can show all the information together or splitted, but that's all.
 
 Tackle tasks in this order from top to bottom:
 
-- Implement workers for offline operation. Here are the docs:
-    - [master docs](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Offline_and_background_operation)
-    - more mozilla resources on safari reading list. 
+- Implement a service worker to prompt install of the app. What currently happens is this: you add bookmark to the home screen, you run it one online and works forever, even offline, but that first launch, if it's not online, won't work. So now you have to add bookmark, fire it up once, and then works forever. The idea would be: install it, go offline, launch it and will work. It's not essential but could be cool. 
+- [cool docs](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Tutorials/js13kGames)
 - Implement calendars:  
     - PUT A CALENDAR SOMEWHERE, WITH COLORS FOR AUCTIONS AND ISSUANCE DATES, WHEN YOU CLICK ON AN ISSUANCE DATE IT WILL COLOR ALL DAYS UNTIL MATURITY.
     - Add a calendar with all my maturity dates highlighted and a list of them.

@@ -6,7 +6,6 @@ async function cacheResources(resources) {
     await cache.addAll(resources);
 }
 
-// Install event listener: Cache resources
 self.addEventListener('install', async (event) => {
     event.waitUntil(cacheResources([
         '/',
@@ -100,7 +99,6 @@ self.addEventListener('activate', async (event) => {
 // Fetch event listener: Serve from cache if offline
 self.addEventListener('fetch', (event) => {
     event.respondWith(async function () {
-
         
         const cachedResponse = await caches.match(event.request);
 
