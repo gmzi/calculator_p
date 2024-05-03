@@ -8,81 +8,8 @@ async function cacheResources(resources) {
 
 // Install event listener: Cache resources
 self.addEventListener('install', async (event) => {
-    console.log('fdsfdsfsdfjsdfjisdjfisdjfoisdjfiosdjfiojdsfiojdsiofjdsfioj')
     event.waitUntil(cacheResources([
         '/',
-        // './public/pyodide/pyodide-lock.json',
-        // './public/pyodide/pyodide.asm.js',
-        // './public/pyodide/pyodide.asm.wasm',
-        // './public/pyodide/pyodide.d.ts',
-        // './public/pyodide/pyodide.js',
-        // './public/pyodide/pyodide.js.map',
-        // './public/pyodide/pyodide.mjs',
-        // './public/pyodide/pyodide.mjs.map',
-        // './public/pyodide/python_stdlib.zip',
-        // './public/pyscript/codemirror-btSUM_0g.js',
-        // './public/pyscript/codemirror-btSUM_0g.js.map',
-        // './public/pyscript/codemirror_commands-MgxtVkrD.js',
-        // './public/pyscript/codemirror_commands-MgxtVkrD.js.map',
-        // './public/pyscript/codemirror_lang-python-luVWQrEE.js',
-        // './public/pyscript/codemirror_lang-python-luVWQrEE.js.map',
-        // './public/pyscript/codemirror_language-_XiX6II0.js',
-        // './public/pyscript/codemirror_language-_XiX6II0.js.map',
-        // './public/pyscript/codemirror_state-BKbyfKsm.js',
-        // './public/pyscript/codemirror_state-BKbyfKsm.js.map',
-        // './public/pyscript/codemirror_view-C0PMO2z_.js',
-        // './public/pyscript/codemirror_view-C0PMO2z_.js.map',
-        // './public/pyscript/core-CRnTod_F.js',
-        // './public/pyscript/core-CRnTod_F.js.map',
-        // './public/pyscript/core.css',
-        // './public/pyscript/core.js',
-        // './public/pyscript/core.js.map',
-        // './public/pyscript/deprecations-manager-Cu0y_cMh.js',
-        // './public/pyscript/deprecations-manager-Cu0y_cMh.js.map',
-        // './public/pyscript/error-CS6gq7CV.js',
-        // './public/pyscript/error-CS6gq7CV.js.map',
-        // './public/pyscript/index-CTWZX_TW.js',
-        // './public/pyscript/index-CTWZX_TW.js.map',
-        // './public/pyscript/py-editor-CyMAlOCD.js',
-        // './public/pyscript/py-editor-CyMAlOCD.js.map',
-        // './public/pyscript/py-terminal-lQnGv6an.js',
-        // './public/pyscript/py-terminal-lQnGv6an.js.map',
-        // './public/pyscript/toml-CvAfdf9_.js',
-        // './public/pyscript/toml-CvAfdf9_.js.map',
-        // './public/pyscript/toml-DiUM0_qs.js',
-        // './public/pyscript/toml-DiUM0_qs.js.map',
-        // './public/pyscript/xterm-DqawCVsv.js',
-        // './public/pyscript/xterm-DqawCVsv.js.map',
-        // './public/pyscript/xterm-readline-D247p8vq.js',
-        // './public/pyscript/xterm-readline-D247p8vq.js.map',
-        // './public/pyscript/xterm.css',
-        // './public/pyscript/xterm_addon-fit--gyF3PcZ.js',
-        // './public/pyscript/xterm_addon-fit--gyF3PcZ.js.map',
-        // './public/pyscript/xterm_addon-web-links-Cnej-nJ6.js',
-        // './public/pyscript/xterm_addon-web-links-Cnej-nJ6.js.map',
-        // './public/pyscript/zip-BVYJ4_a2.js',
-        // './public/pyscript/zip-BVYJ4_a2.js.map',
-
-        // './public/methods/compound_interest.py',
-        // './public/methods/helpers.py',
-        // './public/methods/html_parser.py',
-        // './public/methods/treasury_bills.py',
-        // './public/pages/comp-interest.html',
-        // './public/pages/maturity.html',
-        // './public/pages/percentage.html',
-        // './public/pages/playground.html',
-        // './public/scripts/dropdown.js',
-        // './public/scripts/fetchResults.js',
-        // './public/scripts/formatCurrencyInput.js',
-        // './public/scripts/navigation.js',
-
-        // './public/config.json',
-        // './public/favicon.ico',
-        // './public/index.html',
-        // './public/styles.css',
-        // './public/test.html',
-        // './package-lock.json',
-        // './package.json',
         './index.html',
         './test.html',
         './styles.css',
@@ -144,6 +71,15 @@ self.addEventListener('install', async (event) => {
         './pyscript/xterm_addon-web-links-Cnej-nJ6.js.map',
         './pyscript/zip-BVYJ4_a2.js',
         './pyscript/zip-BVYJ4_a2.js.map',
+        './pyodide/pyodide-lock.json',
+        './pyodide/pyodide.asm.js',
+        './pyodide/pyodide.asm.wasm',
+        './pyodide/pyodide.d.ts',
+        './pyodide/pyodide.js',
+        './pyodide/pyodide.js.map',
+        './pyodide/pyodide.mjs',
+        './pyodide/pyodide.mjs.map',
+        './pyodide/python_stdlib.zip',
     ]));
 });
 
@@ -163,13 +99,9 @@ self.addEventListener('activate', async (event) => {
 
 // Fetch event listener: Serve from cache if offline
 self.addEventListener('fetch', (event) => {
-    return new Response('<h1>YOUR FETCH HAS BEEN INterCEPTED</h1>', {
-        headers: {
-            'Content-Type': 'text/html'
-        }
-    });
-
     event.respondWith(async function () {
+
+        
         const cachedResponse = await caches.match(event.request);
 
         if (cachedResponse) {

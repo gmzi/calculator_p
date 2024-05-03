@@ -23,6 +23,12 @@ const registerServiceWorker = async () => {
       }
     }
   };
+
+  if (window.isSecureContext){
+    registerServiceWorker();
+  } else {
+    console.log('window.isSecureContext is false')
+  }
   
-  registerServiceWorker();
+  
   
