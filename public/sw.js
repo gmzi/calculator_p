@@ -97,7 +97,10 @@ self.addEventListener('install', async (event) => {
         './methods/helpers.py',
         './methods/html_parser.py',
         './methods/treasury_bills.py',
-
+        './scripts/dropdown.js',
+        './scripts/fetchResults.js',
+        './scripts/formatCurrencyInput.js',
+        './scripts/navigation.js',
         './pyscript/codemirror-btSUM_0g.js',
         './pyscript/codemirror-btSUM_0g.js.map',
         './pyscript/codemirror_commands-MgxtVkrD.js',
