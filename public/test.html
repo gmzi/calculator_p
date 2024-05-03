@@ -3,13 +3,68 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculator Offline</title>
+    <title>TEST Calculator Offline</title>
     <script type="module" src="/pyscript/core.js"></script>
     <link rel="stylesheet" href="/pyscript/core.css" />
-    <!-- <link rel="stylesheet" href="styles.css" /> -->
+    <link rel="stylesheet" href="styles.css" />
     <link rel="manifest" href="manifest.json" />
   </head>
   <body>
+    <header id="nav-menu" aria-label="navigation bar">
+      <div class="container">
+        <div class="nav-start">
+          <a class="logo" href="/"> | calpy | </a>
+        </div>
+        <div class="nav-end">
+          <nav class="menu">
+            <ul class="menu-bar">
+              <li><a class="nav-link" href="/">Tbills</a></li>
+              <li>
+                <a class="nav-link" href="/pages/percentage.html">percentage</a>
+              </li>
+              <li>
+                <a class="nav-link" href="/pages/maturity.html">maturity</a>
+              </li>
+              <li>
+                <a class="nav-link" href="/pages/comp-interest.html"
+                  >compound interest</a
+                >
+              </li>
+              <li>
+                <a class="nav-link" href="/pages/playground.html">playground</a>
+              </li>
+            </ul>
+          </nav>
+          <button
+            id="hamburger"
+            aria-label="hamburger"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <i class="bx bx-menu" aria-hidden="true">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-square-menu"
+              >
+                <rect width="18" height="18" x="3" y="3" rx="2" />
+                <path d="M7 8h10" />
+                <path d="M7 12h10" />
+                <path d="M7 16h10" />
+              </svg>
+            </i>
+          </button>
+        </div>
+      </div>
+    </header>
+
     <script type="py">
       import sys
       print("version: ", sys.version)
@@ -17,11 +72,114 @@
     <script type="py" config="config.json">
       from pyscript import document
       from treasury_bills import Treasury
+
+      treasury = Treasury()
+
+      def calculate(e):
+        e.preventDefault()
+        inv_string = document.getElementById('investment').value
+        inv_no_commas = inv_string.replace(",", "")
+        investment = float(inv_no_commas)
+        high_rate = float(document.getElementById('high_rate').value)
+        weeks = int(document.getElementById('weeks').value)
+        issue_date = document.getElementById('issue-date').value
+        reinvestments = 0
+        result = treasury.calculate_and_parse(investment, high_rate, weeks, issue_date, reinvestments)
+        document.getElementById('result').innerHTML = result
+        return
     </script>
 
-    <h1>Test</h1>
+    <div class="wrapper">
+      <h1>***TEST PAGE***</h1>
+      <form id="calculator-form" class="form-0" py-submit="calculate">
+        <div class="module-wrapper">
+          <div class="label-input-wrapper">
+            <label for="investment">Investment $:</label>
+            <input
+              type="text"
+              id="investment"
+              name="investment"
+              data-type="currency"
+              inputmode="decimal"
+              required
+              tabindex="1"
+              value="1000"
+            />
+          </div>
 
+          <div class="label-input-wrapper">
+            <label for="high_rate">High Rate %:</label>
+            <input
+              type="number"
+              id="high_rate"
+              name="high_rate"
+              data-type="decimal"
+              inputmode="decimal"
+              required
+              min="0"
+              step="0.001"
+              tabindex="2"
+              value="1.123"
+            />
+          </div>
 
+          <div class="label-input-wrapper">
+            <label for="weeks">Weeks:</label>
+            <select id="weeks" name="weeks" tabindex="3" required value="4">
+              <option value="4">4-week</option>
+              <option value="8">8-week</option>
+              <option value="13">13-week</option>
+              <option value="17">17-week</option>
+              <option value="26">26-week</option>
+              <option value="52">52-week</option>
+            </select>
+          </div>
+
+          <div class="label-input-wrapper">
+            <label for="issue-date">Issue Date:</label>
+            <!-- <input type="date" id="issue-date" name="issue-date" required /> -->
+            <input
+              type="date"
+              id="issue-date"
+              name="issue-date"
+              required
+              tabindex="4"
+              value="2024-05-06"
+            />
+          </div>
+          <div class="label-input-wrapper">
+            <label></label>
+            <button type="submit" class="btn" tabindex="5">GO!</button>
+          </div>
+        </div>
+      </form>
+
+      <div id="result"></div>
+    </div>
+
+    <div class="wrapper">
+      <h2>Filter auction results</h2>
+
+      <form id="filterForm">
+        <select id="weeks-to-fetch" name="weeks-to-fetch" required tabindex="6">
+          <option value="4">4-week</option>
+          <option value="8">8-week</option>
+          <option value="13">13-week</option>
+          <option value="17">17-week</option>
+          <option value="26">26-week</option>
+          <option value="52">52-week</option>
+        </select>
+        <button type="button" onclick="fetchResults()" class="btn" tabindex="7">
+          Fetch Results
+        </button>
+      </form>
+      <div id="resultsGrid"></div>
+    </div>
+
+    <script src="/scripts/formatCurrencyInput.js"></script>
     <script src="/scripts/navigation.js"></script>
+    <script src="/scripts/dropdown.js"></script>
+    <script src="/scripts/fetchResults.js"></script>
+    <script type="module" src="app.js"></script>
   </body>
 </html>

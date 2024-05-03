@@ -84,6 +84,7 @@ self.addEventListener('install', async (event) => {
         // './package-lock.json',
         // './package.json',
         './index.html',
+        './test.html',
         './styles.css',
         './app.js',
         './manifest.json',

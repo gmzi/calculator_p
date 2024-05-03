@@ -8,7 +8,10 @@
 
 - server folder: calculator_server
 
-There are ./run.sh and ./stop.sh, backup in case we need to implement a local server. 
+- There are ./run.sh and ./stop.sh, backup in case we need to implement a local server. 
+
+- To list files on folder, find ./public/listFiles.sh
+
 
 Ports: 
 - `http://localhost:8000` frontend.
