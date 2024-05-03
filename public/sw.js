@@ -162,24 +162,24 @@ self.addEventListener('activate', async (event) => {
 });
 
 // Fetch event listener: Serve from cache if offline
-self.addEventListener('fetch', (event) => {
-    event.respondWith(async function () {
-        const cachedResponse = await caches.match(event.request);
+// self.addEventListener('fetch', (event) => {
+//     event.respondWith(async function () {
+//         const cachedResponse = await caches.match(event.request);
 
-        if (cachedResponse) {
-            return cachedResponse;
-        }
+//         if (cachedResponse) {
+//             return cachedResponse;
+//         }
 
-        // Fallback to network if not in cache and online
-        if (navigator.onLine) {
-            return fetch(event.request);
-        }
+//         // Fallback to network if not in cache and online
+//         if (navigator.onLine) {
+//             return fetch(event.request);
+//         }
 
-        // Fallback to offline page if offline and not in cache
-        return new Response('<h1>Content not available offline</h1>', {
-            headers: {
-                'Content-Type': 'text/html'
-            }
-        });
-    }());
-});
+//         // Fallback to offline page if offline and not in cache
+//         return new Response('<h1>Content not available offline</h1>', {
+//             headers: {
+//                 'Content-Type': 'text/html'
+//             }
+//         });
+//     }());
+// });
