@@ -1,5 +1,8 @@
 const currentUrl = window.location.href;
-const BASE_URL = `${origin}/`;
+const BASE_URL = `${window.origin}/`;
+
+console.log('origin: ')
+console.log(origin)
 
 function extractUrlPart() {
     const origin = window.location.origin;
