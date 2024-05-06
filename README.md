@@ -17,19 +17,15 @@ Ports:
 - `http://localhost:8000` frontend.
 
 ## Development
-
-- Remember this tool must be super dumb, very simple functions that perform very simple tasks, because this tool is a complement to other tools, for now my treasuries spreadsheet only, but I'm sure it will get more complex. But all the complexities and hypothesis drafting will be handled in spreadsheets, that seem to be super handy and the bes tool to handle treasuries, this tool has to handle these 3 very simple things:
-1. Calculate interest to be accrued. 
-2. Calculate dates of maturity. 
-3. Display things in a calendar?
-
-That's it. It can show all the information together or splitted, but that's all. 
-
-
 Tackle tasks in this order from top to bottom:
 
-- Implement a service worker to prompt install of the app. What currently happens is this: you add bookmark to the home screen, you run it one online and works forever, even offline, but that first launch, if it's not online, won't work. So now you have to add bookmark, fire it up once, and then works forever. The idea would be: install it, go offline, launch it and will work. It's not essential but could be cool. 
-- [cool docs](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Tutorials/js13kGames)
+- Nav active link color underline not working on prod version but working it localhost. Fix it. 
+- Fix layout for mobile. (label and input as column in small screens, as row in larger. It's a media query I erased I think.)
+- Add icons.
+- Make an open source version:
+    1. Implement mock data instead of fetching to TreasuryDirect. 
+    2. Create new repo and make it public. 
+    3. Tag pyscript, python, service workers. 
 - Implement calendars:  
     - PUT A CALENDAR SOMEWHERE, WITH COLORS FOR AUCTIONS AND ISSUANCE DATES, WHEN YOU CLICK ON AN ISSUANCE DATE IT WILL COLOR ALL DAYS UNTIL MATURITY.
     - Add a calendar with all my maturity dates highlighted and a list of them.
