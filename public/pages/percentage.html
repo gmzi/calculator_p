@@ -11,9 +11,7 @@
     <header id="nav-menu" aria-label="navigation bar">
       <div class="container">
         <div class="nav-start">
-          <a class="logo" href="/">
-           | calpy |
-          </a>
+          <a class="logo" href="/"> | calpy | </a>
         </div>
         <div class="nav-end">
           <nav class="menu">
@@ -26,7 +24,9 @@
                 <a class="nav-link" href="/pages/maturity.html">maturity</a>
               </li>
               <li>
-                <a class="nav-link" href="/pages/comp-interest.html">compound interest</a>
+                <a class="nav-link" href="/pages/comp-interest.html"
+                  >compound interest</a
+                >
               </li>
               <li>
                 <a class="nav-link" href="/pages/playground.html">playground</a>
@@ -71,32 +71,36 @@
           <h3>What is p% of x?</h3>
           <div class="label-input-wrapper">
             <label for="investment">What is</label>
-            <input
-              type="text"
-              id="input-A"
-              name="input-A"
-              data-type="decimal"
-              inputmode="decimal"
-              pattern="[0-9]*"
-              tabindex="1"
-            />
-            <span for="investment">%</span>
+            <div class="input-span-wrapper">
+              <input
+                type="text"
+                id="input-A"
+                name="input-A"
+                data-type="decimal"
+                inputmode="decimal"
+                pattern="[0-9]*"
+                tabindex="1"
+              />
+              <span for="investment">%</span>
+            </div>
           </div>
           <div class="label-input-wrapper">
             <label for="high_rate">of</label>
-            <input
-              type="text"
-              id="input-B"
-              name="input-B"
-              data-type="currency"
-              inputmode="decimal"
-              pattern="[0-9]*"
-              required
-              tabindex="2"
-            />
-            <span for="investment">?</span>
+            <div class="input-span-wrapper">
+              <input
+                type="text"
+                id="input-B"
+                name="input-B"
+                data-type="currency"
+                inputmode="decimal"
+                pattern="[0-9]*"
+                required
+                tabindex="2"
+              />
+              <span for="investment">?</span>
+            </div>
           </div>
-          <div class="label-input-wrapper">
+          <div class="result-wrapper">
             <label>y = </label>
             <div id="resultContainer-1" class="result-container"></div>
           </div>
@@ -109,6 +113,7 @@
           <h3>x is what percent of y?</h3>
           <div class="label-input-wrapper">
             <label for="investment"></label>
+            <div class="input-span-wrapper">
             <input
               type="text"
               id="input-C"
@@ -118,10 +123,12 @@
               pattern="[0-9]*"
               tabindex="3"
             />
-            <span for="investment">is what percent</span>
+            <!-- <span for="investment">is what percent</span> -->
+          </div>
           </div>
           <div class="label-input-wrapper">
-            <label for="high_rate">of</label>
+            <label for="high_rate">is what percent of</label>
+            <div class="input-span-wrapper">
             <input
               type="text"
               id="input-D"
@@ -134,13 +141,15 @@
             />
             <span for="investment">?</span>
           </div>
-          <div class="label-input-wrapper">
+          </div>
+          <div class="result-wrapper">
             <label>p = </label>
             <div id="resultContainer-2" class="result-container"></div>
           </div>
           <div class="formula">p = x * 100 / y</div>
         </div>
       </form>
+
       <form id="calculator-form" class="form-3" py-submit="calculate">
         <div class="module-wrapper">
           <h3>x is p% of what?</h3>
@@ -155,10 +164,11 @@
               pattern="[0-9]*"
               tabindex="5"
             />
-            <span for="investment">is</span>
+            <span for="investment"></span>
           </div>
           <div class="label-input-wrapper">
-            <label for="investment"></label>
+            <label for="investment">is</label>
+            <div class="input-span-wrapper">
             <input
               type="text"
               id="input-F"
@@ -168,7 +178,9 @@
               pattern="[0-9]*"
               tabindex="6"
             />
-            <span for="investment">% of what?</span>
+            <span for="investment">%</span>
+            <label>of what?</label>
+          </div>
           </div>
           <div class="label-input-wrapper">
             <label>y = </label>

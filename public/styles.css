@@ -305,22 +305,20 @@ form {
 
 form h3 {
   margin-bottom: 1em;
+  text-align: center;
 }
 
 .label-input-wrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* flex-direction: row; */
 }
 
-.label-input-wrapper label {
-  width: 100%;
-}
-
+.label-input-wrapper label,
 .label-input-wrapper input,
 .label-input-wrapper select,
-.btn-container {
+.btn-container,
+.result-container {
   width: 100%;
 }
 
@@ -351,6 +349,25 @@ input[type='date'] {
   box-sizing: border-box;
 }
 
+.input-span-wrapper {
+  width: 90%; 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.result-wrapper {
+  width: 90%;
+}
+
+.input-span-wrapper input {
+  width: 95%;
+}
+
+.input-span-wrapper span {
+  display: inline;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -377,25 +394,25 @@ a {
   ); */
 }
 .form-1 {
-  background: linear-gradient(
+  /* background: linear-gradient(
     to right,
     rgba(175, 140, 75, 0.674),
     rgba(171, 122, 29, 0.674)
-  );
+  ); */
 }
 .form-2 {
-  background: linear-gradient(
+  /* background: linear-gradient(
     to left,
     rgba(175, 140, 75, 0.674),
     rgba(171, 122, 29, 0.674)
-  );
+  ); */
 }
 .form-3 {
-  background: linear-gradient(
+  /* background: linear-gradient(
     to right,
     rgba(175, 140, 75, 0.674),
     rgba(171, 122, 29, 0.674)
-  );
+  ); */
 }
 
 .module-wrapper {
