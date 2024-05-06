@@ -111,8 +111,7 @@ nav ul {
 .active-page {
   position: relative;
   padding-bottom: 2px;
-  /* border-bottom: var(--li-bottom) */
-  border-bottom: 1px solid red;
+  border-bottom: var(--li-bottom)
 }
 
 #nav-menu,
