@@ -34,6 +34,8 @@
     #00000080
   );
 
+  --border: 1px solid #cbcbd9;
+  --box-shadow: 0 1px 2px 0 rgba(246, 246, 246, 0.05);
   --callout-rgb: 238, 240, 241;
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
@@ -46,7 +48,8 @@
   --color-btn-border: 1px solid rgba(116, 247, 252, 0.849);
   --color-btn-background: #262626f9;
   --color-btn-hover: rgba(249, 161, 252, 0.825);
-  --color-btn-box-shadow: 0 0.15rem 0.3rem rgba(0, 0, 0, 0.15), inset 0 0.1rem 0.2rem #fff,
+  --color-btn-box-shadow: 0 0.15rem 0.3rem rgba(0, 0, 0, 0.15),
+    inset 0 0.1rem 0.2rem #fff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -75,19 +78,22 @@
       #ffffff80
     );
 
+    --border: 1px solid #27272a;
+    --box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --callout-rgb: 20, 20, 20;
     --callout-border-rgb: 108, 108, 108;
     --card-rgb: 100, 100, 100;
     --card-border-rgb: 200, 200, 200;
 
-    --border-bottom: 1px solid rgba(217, 217, 233, .124);
+    --border-bottom: 1px solid rgba(217, 217, 233, 0.124);
     --li-bottom: 2px solid rgba(218, 100, 10, 0.838);
 
     --color-btn-border: 1px solid rgba(173, 249, 251, 0.675);
     --color-btn: black;
     --color-btn-background: #f4f4f4f1;
     --color-btn-hover: rgba(204, 200, 205, 0.499);
-    --color-btn-box-shadow: 0 0.15rem 0.3rem rgba(88, 88, 88, 0.085), inset 0 0.1rem 0.2rem rgba(17, 17, 17, 0.169),
+    --color-btn-box-shadow: 0 0.15rem 0.3rem rgba(88, 88, 88, 0.085),
+      inset 0 0.1rem 0.2rem rgba(17, 17, 17, 0.169);
   }
 }
 
@@ -111,7 +117,7 @@ nav ul {
 .active-page {
   position: relative;
   padding-bottom: 2px;
-  border-bottom: var(--li-bottom)
+  border-bottom: var(--li-bottom);
 }
 
 #nav-menu,
@@ -120,13 +126,13 @@ nav ul {
   margin: 1em;
 }
 
-.container, 
+.container,
 .wrapper {
   padding: 1rem;
 }
 
 .wrapper {
-  text-align: center;
+  /* text-align: center; */
   max-width: 30em;
   margin: 0 auto;
 }
@@ -266,7 +272,7 @@ button {
 .btn {
   padding: 10px 20px;
   text-align: center;
-  text-decoration: none; 
+  text-decoration: none;
   display: inline-block;
   font-size: 16px;
   border-radius: 4px;
@@ -285,7 +291,7 @@ button {
   background-color: rgba(139, 106, 106, 0.752);
   padding: 5px 10px;
   border-radius: 2px;
-  margin: .3em 0;
+  margin: 0.3em 0;
 }
 
 .wrapper {
@@ -303,12 +309,27 @@ form h3 {
 
 .label-input-wrapper {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  /* flex-direction: row; */
 }
 
 .label-input-wrapper label {
-  flex: 0 0 20%;
+  width: 100%;
+}
+
+.label-input-wrapper input,
+.label-input-wrapper select,
+.btn-container {
+  width: 100%;
+}
+
+.btn-container {
+  text-align: center;
+}
+
+.btn-container button {
+  width: 40%;
 }
 
 input {
@@ -324,8 +345,8 @@ input,
 select,
 input[type='date'] {
   padding: 0.8em;
-  margin: 0 0 1em .2em;
-  border: 1px solid #ccc;
+  margin: 0 0 1em 0.2em;
+  border: var(--border);
   border-radius: 4px;
   box-sizing: border-box;
 }
@@ -345,7 +366,7 @@ a {
 }
 
 #calculator-form span {
-  padding: 0 .5em;
+  padding: 0 0.5em;
 }
 
 .form-0 {
@@ -379,11 +400,12 @@ a {
 
 .module-wrapper {
   background-color: rgb(var(--background-end-rgb));
+  box-shadow: var(--box-shadow);
   padding: 2em;
   margin: 1em auto;
   border-radius: 5px;
-  width: 90%;
-  border: 1px solid rgba(244, 244, 244, 0.758);
+  width: 100%;
+  border: var(--border);
 }
 
 .row {
@@ -414,19 +436,19 @@ input[type='text'] {
   text-align: left;
 }
 
-.grid div, 
+.grid div,
 table td {
   border-bottom: 1px solid rgba(48, 48, 137, 0.582);
 }
 
 table td {
   border-right: 1px solid rgba(48, 48, 137, 0.582);
-  padding: .2em
+  padding: 0.2em;
 }
 
 table {
-  margin: .5rem;
-  padding: .5rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
   border: 1px solid rgba(163, 103, 148, 0.888);
 }
 
@@ -488,18 +510,6 @@ table {
 
 @media (max-width: 1100px) {
 
-  .label-input-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .label-input-wrapper input,
-  .label-input-wrapper select {
-    width: 80%;
-  }
-
-
   #hamburger {
     display: block;
   }
@@ -537,7 +547,7 @@ table {
   }
 
   .menu-bar li {
-     border-bottom: var(--li-bottom);
+    border-bottom: var(--li-bottom);
   }
 
   .menu-bar > li:not(:last-child) {
