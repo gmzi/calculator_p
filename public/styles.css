@@ -349,11 +349,11 @@ a {
 }
 
 .form-0 {
-  background: linear-gradient(
+  /* background: linear-gradient(
     to bottom,
     rgba(115, 137, 74, 0.787),
     rgba(194, 135, 26, 0.674)
-  );
+  ); */
 }
 .form-1 {
   background: linear-gradient(
@@ -379,7 +379,11 @@ a {
 
 .module-wrapper {
   background-color: rgb(var(--background-end-rgb));
-  padding: 1em;
+  padding: 2em;
+  margin: 1em auto;
+  border-radius: 5px;
+  width: 90%;
+  border: 1px solid rgba(244, 244, 244, 0.758);
 }
 
 .row {
@@ -470,22 +474,32 @@ table {
 }
 
 @media (max-width: 767px) {
-  .result-container,
-  input {
-    /* text-align: center; */
-    max-width: 60%;
-  }
-  .label-input-wrapper {
+  /* .label-input-wrapper {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .label-input-wrapper input {
-    flex: 1;
-  }
+  .label-input-wrapper input,
+  .label-input-wrapper select {
+    width: 80%;
+  } */
 }
 
 @media (max-width: 1100px) {
+
+  .label-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .label-input-wrapper input,
+  .label-input-wrapper select {
+    width: 80%;
+  }
+
+
   #hamburger {
     display: block;
   }

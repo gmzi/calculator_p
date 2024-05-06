@@ -19,7 +19,6 @@ Ports:
 ## Development
 Tackle tasks in this order from top to bottom:
 
-- Nav active link color underline not working on prod version but working it localhost. Fix it. 
 - Fix layout for mobile. (label and input as column in small screens, as row in larger. It's a media query I erased I think.)
 - Add icons.
 - Make an open source version:
