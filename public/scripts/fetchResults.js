@@ -7,9 +7,7 @@ async function fetchResults() {
     }
 
     try {
-        const response = await fetch(
-            `https://calpy-server.vercel.app/api?weeks=${weeksInput}`
-        )
+        const response = await fetch('/assets/data/auctionResults.json')
         const data = await response.json()
         displayResults(data)
         return
